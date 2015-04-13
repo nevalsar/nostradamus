@@ -22,6 +22,67 @@
     <![endif]-->
   </head>
   <body>
+
+    <div class="modal fade" id="modal_signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Product Details</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
+                      </div>
+                      <div class="col-sm-9">
+                        <blockquote>
+                          <h1>Some Awesome Product Mk. II</h1>
+                          <p> This is the result description</p>
+                          <p> This is the follow-up description</p>
+                          <p> This is the wrap</p>
+                        </blockquote>
+                      </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row text-center">
+                      <div class="col-sm-12">
+                        <h2>Reviews</h2>
+                      </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                      <div id="review-container" class="col-sm-12">
+
+                        <div class="row">
+                          <div class="col-sm-10 col-sm-offset-1 review-item well clear-well">
+                            <blockquote>
+                              <h4>Review title</h4>
+                              <small>username</small>
+                              <div id="rating-box">5</div>
+                              <br>
+                              <br>
+                              <i><p id="review-text"> This is the review text</p></i>
+                            </blockquote>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div class="container">
 
       <div class="row">
@@ -139,7 +200,7 @@
 
         <div id="result-container" class="col-sm-10">
 
-          <a href="#">
+          <a data-toggle="modal" data-target="#modal_signup" href="#">
             <div class="row">
               <div class="col-sm-12 well clear-well result-item">
                 <div class="row">
@@ -224,6 +285,14 @@
           console.log(this.checked = false);
         })
       });
+    </script>
+    <script type="text/javascript">
+      (function printStars() {
+        times = parseInt($('#rating-box').text());
+        for (var elt = ""; times > 0; times--)
+          elt += '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>';
+        $('#rating-box').replaceWith(elt);
+      })();
     </script>
   </body>
 </html>
