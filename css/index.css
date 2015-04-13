@@ -23,8 +23,11 @@ hr {
     width: 100%;
 }
 
-#filter-container .btn-group-vertical{
+#filter-container .btn-group-vertical, .btn-group{
     width: 100%;
+}
+#filter-container .btn-group .btn {
+    width: 50%;
 }
 
 #result-container {
@@ -33,7 +36,12 @@ hr {
 }
 
 #result-container .result-item {
-    border: solid 1px rgba(0, 0, 0, .5);
+    /*border: solid 1px rgba(0, 0, 0, .5);*/
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: solid 1px rgba(0, 0, 0, .5);
+    margin-top: 0;
+    margin-bottom: 1px;
 }
 
 #result-container .result-item img{
@@ -44,4 +52,9 @@ hr {
     font-size: 10pt;
     font-weight: 100;
     color: rgba(0, 0, 0, .6);
+    transition: all 1s ease-out;
+}
+
+#result-container .result-item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
