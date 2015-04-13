@@ -92,16 +92,21 @@
           <h3>Filters</h3>
           <div class="row well clear-well">
             <div class="col-sm-12">
-
-             <div class="btn-group-vertical" data-toggle="buttons">
-               <label class="btn btn-default active">
-                 <input type="radio" name="options" autocomplete="off" checked> Filter1
+            <div class="btn-group" role="group" aria-label="...">
+              <button id="filter-option-all" type="button" class="btn btn-default">All</button>
+              <button id="filter-option-none" type="button" class="btn btn-default">None</button>
+            </div>
+            <br>
+            <br>
+             <div id="filter-options-container" class="btn-group-vertical" data-toggle="buttons">
+               <label class="btn btn-default filter-option active">
+                 <input type="checkbox" name="options" autocomplete="off" checked> Filter1
                </label>
-               <label class="btn btn-default">
-                 <input type="radio" name="options" autocomplete="off"> Filter2
+               <label class="btn btn-default filter-option">
+                 <input type="checkbox" name="options" autocomplete="off"> Filter2
                </label>
-               <label class="btn btn-default">
-                 <input type="radio" name="options" autocomplete="off"> Filter3
+               <label class="btn btn-default filter-option">
+                 <input type="checkbox" name="options" autocomplete="off"> Filter3
                </label>
              </div>
 
@@ -134,57 +139,65 @@
 
         <div id="result-container" class="col-sm-10">
 
-          <div class="row">
-            <div class="col-sm-12 well clear-well result-item">
-              <div class="row">
-                <div class="col-sm-3">
-                  <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
-                </div>
-                <div class="col-sm-9">
-                  <blockquote>
-                    <h4>Result 1</h4>
-                    <p> This is the result description</p>
-                    <p> This is the follow-up description</p>
-                    <p> This is the wrap</p>
-                  </blockquote>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 well clear-well result-item">
-              <div class="row">
-                <div class="col-sm-3">
-                  <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
-                </div>
-                <div class="col-sm-9">
-                  <blockquote>
-                    <h4>Result 1</h4>
-                    <p> This is the result description</p>
-                    <p> This is the follow-up description</p>
-                    <p> This is the wrap</p>
-                  </blockquote>
+          <a href="#">
+            <div class="row">
+              <div class="col-sm-12 well clear-well result-item">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
+                  </div>
+                  <div class="col-sm-9">
+                    <blockquote>
+                      <h4>Result 1</h4>
+                      <p> This is the result description</p>
+                      <p> This is the follow-up description</p>
+                      <p> This is the wrap</p>
+                    </blockquote>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 well clear-well result-item">
-              <div class="row">
-                <div class="col-sm-3">
-                  <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
-                </div>
-                <div class="col-sm-9">
-                  <blockquote>
-                    <h4>Result 1</h4>
-                    <p> This is the result description</p>
-                    <p> This is the follow-up description</p>
-                    <p> This is the wrap</p>
-                  </blockquote>
+          </a>
+
+          <a href="#">
+            <div class="row">
+              <div class="col-sm-12 well clear-well result-item">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
+                  </div>
+                  <div class="col-sm-9">
+                    <blockquote>
+                      <h4>Result 1</h4>
+                      <p> This is the result description</p>
+                      <p> This is the follow-up description</p>
+                      <p> This is the wrap</p>
+                    </blockquote>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
+
+          <a href="#">
+            <div class="row">
+              <div class="col-sm-12 well clear-well result-item">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
+                  </div>
+                  <div class="col-sm-9">
+                    <blockquote>
+                      <h4>Result 1</h4>
+                      <p> This is the result description</p>
+                      <p> This is the follow-up description</p>
+                      <p> This is the wrap</p>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
 
         </div>
 
@@ -195,5 +208,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript">
+      $('#filter-option-all').click(function whenClickAll(){
+        $('.filter-option').addClass('active');
+        thing = $('.filter-option > input');
+        $(thing).each(function (e) {
+          console.log(this.checked = true);
+        })
+      });
+      $('#filter-option-none').click(function whenClickAll(){
+        $('.filter-option').removeClass('active');
+        thing = $('.filter-option > input');
+        $(thing).each(function (e) {
+          console.log(this.checked = false);
+        })
+      });
+    </script>
   </body>
 </html>
