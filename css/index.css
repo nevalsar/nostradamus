@@ -1,0 +1,47 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.clear-well {
+    background-color: white;
+    border: none;
+}
+
+hr {
+    border-color: rgba(0, 0, 0, .5);
+}
+
+#search-param {
+    margin-bottom: 0;
+}
+
+#search-param .form-group{
+    width: 100%;
+}
+
+#search-param .form-control{
+    width: 100%;
+}
+
+#filter-container .btn-group-vertical{
+    width: 100%;
+}
+
+#result-container {
+    border-left: solid 1px rgba(0, 0, 0, .5);
+    padding: 25px 0 0 50px;
+}
+
+#result-container .result-item {
+    border: solid 1px rgba(0, 0, 0, .5);
+}
+
+#result-container .result-item img{
+    width: 150px;
+}
+
+#result-container .result-item p{
+    font-size: 10pt;
+    font-weight: 100;
+    color: rgba(0, 0, 0, .6);
+}
