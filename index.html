@@ -40,6 +40,9 @@
                       <div class="col-sm-9">
                         <blockquote>
                           <h1>Some Awesome Product Mk. II</h1>
+                          <a href="#">Go to official website</a><br>
+                          <div class="rating-box">1</div>
+                          <strong><p>Category</p></strong>
                           <p> This is the result description</p>
                           <p> This is the follow-up description</p>
                           <p> This is the wrap</p>
@@ -64,7 +67,7 @@
                             <blockquote>
                               <h4>Review title</h4>
                               <small>username</small>
-                              <div id="rating-box">5</div>
+                              <div class="rating-box">5</div>
                               <br>
                               <br>
                               <i><p id="review-text"> This is the review text</p></i>
@@ -202,6 +205,8 @@
                   <div class="col-sm-9">
                     <blockquote>
                       <h4>Result 1</h4>
+                      <div class="rating-box">4</div>
+                      <strong><p>Category</p></strong>
                       <p> This is the result description</p>
                       <p> This is the follow-up description</p>
                       <p> This is the wrap</p>
@@ -222,6 +227,8 @@
                   <div class="col-sm-9">
                     <blockquote>
                       <h4>Result 1</h4>
+                      <div class="rating-box">3</div>
+                      <strong><p>Category</p></strong>
                       <p> This is the result description</p>
                       <p> This is the follow-up description</p>
                       <p> This is the wrap</p>
@@ -242,6 +249,8 @@
                   <div class="col-sm-9">
                     <blockquote>
                       <h4>Result 1</h4>
+                      <div class="rating-box">2</div>
+                      <strong><p>Category</p></strong>
                       <p> This is the result description</p>
                       <p> This is the follow-up description</p>
                       <p> This is the wrap</p>
@@ -280,10 +289,12 @@
     </script>
     <script type="text/javascript">
       (function printStars() {
-        times = parseInt($('#rating-box').text());
-        for (var elt = ""; times > 0; times--)
-          elt += '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>';
-        $('#rating-box').replaceWith(elt);
+        $('.rating-box').each(function (e) {
+          times = parseInt($(this).text());
+          for (var elt = ""; times > 0; times--)
+            elt += '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>';
+          $(this).replaceWith(elt);
+        });
       })();
     </script>
   </body>
