@@ -34,25 +34,47 @@ function functionName(data) {
 	var categories = new StringSet();
 	for(i=0; i<results.length; i++) {
 		categories.add(results[i]["category"]);
-		var str = '          \
-			  <a href="#">\
-	            <div class="row">\
-	              <div class="col-sm-12 well clear-well result-item">\
-	                <div class="row">\
-	                  <div class="col-sm-3">\
-	                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">\
-	                  </div>\
-	                  <div class="col-sm-9">\
-	                    <blockquote>\
+		var str = '\
+          <a data-toggle="modal" data-target="#'+results[i]["pid"]+'" href="#">\
+            <div class="row">\
+              <div class="col-sm-12 well clear-well result-item">\
+                <div class="row">\
+                  <div class="col-sm-3">\
+                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">\
+                  </div>\
+                  <div class="col-sm-9">\
+                    <blockquote>\
 	                      <h4>'+results[i]["name"]+'</h4>\
+                      <div class="rating-box">'+results[i]["avg_score"]+'</div>\
+                      <strong><p>'+results[i]["category"]+'</p></strong>\
 	                      <p> '+results[i]["description"]+'</p>\
-	                      <p> Category: '+results[i]["category"]+'</p>\
-	                    </blockquote>\
-	                  </div>\
-	                </div>\
-	              </div>\
-	            </div>\
-	          </a>';
+                    </blockquote>\
+                  </div>\
+                </div>\
+              </div>\
+            </div>\
+          </a>\
+          ';
+
+		// var str = '          \
+		// 	  <a href="#">\
+	 //            <div class="row">\
+	 //              <div class="col-sm-12 well clear-well result-item">\
+	 //                <div class="row">\
+	 //                  <div class="col-sm-3">\
+	 //                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">\
+	 //                  </div>\
+	 //                  <div class="col-sm-9">\
+	 //                    <blockquote>\
+	 //                      <h4>'+results[i]["name"]+'</h4>\
+	 //                      <p> '+results[i]["description"]+'</p>\
+	 //                      <p> Category: '+results[i]["category"]+'</p>\
+	 //                    </blockquote>\
+	 //                  </div>\
+	 //                </div>\
+	 //              </div>\
+	 //            </div>\
+	 //          </a>';
 		$("#result-container").append(str);
 	}
 console.log(categories.values());
@@ -64,6 +86,60 @@ console.log(categories.values());
                </label>\
 		'
 		$("#filter-options-container").append(str);
+var str = '\
+		    <div class="modal fade" id="modal_signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+        <div class="modal-dialog">\
+            <div class="modal-content">\
+                <div class="modal-header text-center">\
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+                    <h4 class="modal-title" id="myModalLabel">Product Details</h4>\
+                </div>\
+                <div class="modal-body">\
+                    <div class="row">\
+                      <div class="col-sm-3">\
+                        <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">\
+                      </div>\
+                      <div class="col-sm-9">\
+                        <blockquote>\
+                          <h1>Some Awesome Product Mk. II</h1>\
+                          <a href="#">Go to official website</a><br>\
+                          <div class="rating-box">1</div>\
+                          <strong><p>Category</p></strong>\
+                          <p> This is the result description</p>\
+                          <p> This is the follow-up description</p>\
+                          <p> This is the wrap</p>\
+                        </blockquote>\
+                      </div>\
+                    </div>\
+                    <hr>\
+                    <div class="row text-center">\
+                      <div class="col-sm-12">\
+                        <h2>Reviews</h2>\
+                      </div>\
+                    </div>\
+                    <br>\
+                    <div class="row">\
+                      <div id="review-container" class="col-sm-12">\
+                        <div class="row">\
+                          <div class="col-sm-10 col-sm-offset-1 review-item well clear-well">\
+                            <blockquote>\
+                              <h4>Review title</h4>\
+                              <small>username</small>\
+                              <div class="rating-box">5</div>\
+                              <br>\
+                              <br>\
+                              <i><p id="review-text"> This is the review text</p></i>\
+                            </blockquote>\
+                          </div>\
+                        </div>\
+                      </div>\
+                    </div>\
+                </div>\
+                <div class="modal-footer">\
+                </div>\
+            </div>\
+        </div>\
+    </div>';
 
 	}
 	// $("#result-container").append(JSON.stringify(results, null, "\t"));
