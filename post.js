@@ -1,8 +1,72 @@
 
+function StringSet() {
+    var setObj = {}, val = {};
+
+    this.add = function(str) {
+        setObj[str] = val;
+    };
+
+    this.contains = function(str) {
+        return setObj[str] === val;
+    };
+
+    this.remove = function(str) {
+        delete setObj[str];
+    };
+
+    this.values = function() {
+        var values = [];
+        for (var i in setObj) {
+            if (setObj[i] === val) {
+                values.push(i);
+            }
+        }
+        return values;
+    };
+}
+
 function functionName(data) {
-	console.log(JSON.stringify(data, null, "\t"));
-	console.log(data[0]["pid"]);
-	alert("done");
+	var results = data ["results"];
+	console.log(JSON.stringify(results, null, "\t"));
+	// console.log(data["results"][0]["pid"]);
+	var i=0;
+	// var categories = [];
+	var categories = new StringSet();
+	for(i=0; i<results.length; i++) {
+		categories.add(results[i]["category"]);
+		var str = '          \
+			  <a href="#">\
+	            <div class="row">\
+	              <div class="col-sm-12 well clear-well result-item">\
+	                <div class="row">\
+	                  <div class="col-sm-3">\
+	                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">\
+	                  </div>\
+	                  <div class="col-sm-9">\
+	                    <blockquote>\
+	                      <h4>'+results[i]["name"]+'</h4>\
+	                      <p> '+results[i]["description"]+'</p>\
+	                      <p> Category: '+results[i]["category"]+'</p>\
+	                    </blockquote>\
+	                  </div>\
+	                </div>\
+	              </div>\
+	            </div>\
+	          </a>';
+		$("#result-container").append(str);
+	}
+console.log(categories.values());
+	var cat = categories.values();
+	for(i=0; i<cat.length; i++) {
+		str='\
+               <label class="btn btn-default filter-option">\
+                 <input type="checkbox" name="options" autocomplete="off"> '+ cat[i] +'\
+               </label>\
+		'
+		$("#filter-options-container").append(str);
+
+	}
+	// $("#result-container").append(JSON.stringify(results, null, "\t"));
 }
 
 $.ajax({
@@ -15,11 +79,6 @@ $.ajax({
   //tell YQL what we want and that we want JSON
   data: {
     query: ""
-  },
-  //work with the response
-  success: function(data) {
-    console.log(data); //formatted JSON data
-	alert ("received");
   }
 });
 
