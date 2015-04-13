@@ -10,7 +10,7 @@ def getpidinfo(pid):
     r = requests.get("http://boschtools.ugc.bazaarvoice.com/data/reviews.xml", params={'apiversion': '5.4', 'passKey': 'hse2uvr3q27287ht1ou694cat', 'include': 'products','stats':'reviews','Filter':'ProductId:'+inp})
     if(r.status_code!=200):
         print 'Load:',r.reason
-    root = ET.fromstring(r.text)
+    root = ET.fromstring(r.text.encode('ascii', 'ignore'))
     # for child in root:
     #     print child.tag,child.text
     # print root.text
@@ -51,4 +51,4 @@ def getpidinfo(pid):
     #
     return products
 
-print getpidinfo(['AG40-85PD','AG40-11P'])
+# print getpidinfo(['2605411035'])
