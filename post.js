@@ -1,7 +1,7 @@
 var categories = [];
 var results = [];
 var sortsentiment = 0;
-
+var order = 1;
 
 
 function clickfilter(el)
@@ -18,6 +18,19 @@ function clickfilter(el)
 	loadResults();
 }
 
+$("#sortbtn").click(function(){
+    if(order==1)
+    {
+        order = -1;
+        $("#sortbtn").html("Ascending");
+    }
+    else
+    {
+        order = 1;
+        $("#sortbtn").html("Descending");
+    }
+    loadResults();
+})
 function StringSet() {
 	var setObj = {}, val = {};
 
@@ -105,8 +118,8 @@ function request_data(pid) {
 
 
 function loadResults(){
-	if(sortsentiment==1) results.sort(function(a,b) { return parseFloat(b["avg_score"]) - parseFloat(a["avg_score"]) } );
-	else results.sort(function(a,b) { return parseFloat(b["solr_score"]) - parseFloat(a["solr_score"]) } );
+	if(sortsentiment==1) results.sort(function(a,b) { return order*(parseFloat(b["avg_score"]) - parseFloat(a["avg_score"])) } );
+	else results.sort(function(a,b) { return order*(parseFloat(b["solr_score"]) - parseFloat(a["solr_score"])) } );
 
 	var i=0;
     // var categories = [];
@@ -143,7 +156,7 @@ function loadResults(){
 function functionName(data) {
 	// alert('hola');
 	results = data ["results"];
-	results.sort(function(a,b) { return parseFloat(b["solr_score"]) - parseFloat(a["solr_score"]) } );
+	results.sort(function(a,b) { return order*(parseFloat(b["solr_score"]) - parseFloat(a["solr_score"])) } );
 	// console.log(JSON.stringify(results, null, "\t"));
 	// console.log(data["results"][0]["pid"]);
 	var i=0;
@@ -152,7 +165,11 @@ function functionName(data) {
     $("#result-container").html("");
     for(i=0; i<results.length; i++) {
     	results[i]["avg_score"] = Math.round(results[i]["avg_score"]*100)/100;
-    	results[i]["avg_senti"] = Math.round(results[i]["avg_sentiment_score"]*100)/100;
+        var x = results[i]["avg_sentiment_score"];
+        var mult = 1;
+        if(x<0) mult = -1;
+        x *= mult;
+    	results[i]["avg_senti"] = mult* Math.round(x*100)/100;
     	results[i]["solr_score"] = Math.round(results[i]["solr_score"]*100)/100;
     	results[i]["category"] = results[i]["category"].replace('quot;','');
     	results[i]["category"] = results[i]["category"].replace('"','');

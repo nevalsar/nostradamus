@@ -13,315 +13,166 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/index.css" rel="stylesheet">
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+</head>
+<body>
+	<div id = "modals">
+		<div class="modal fade" id="modalpid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">	
+				<div class="modal-content">	
+					<div class="modal-header text-center">	
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>	
+						<h4 class="modal-title" id="myModalLabel">Product Details</h4>	
+					</div>	
+					<div class="modal-body">	
+						<div class="row">	
+							<div class="col-sm-3">	
+								<img id="pimg" src="http://mdm.boschwebservices.com/files/Bosch Vacuum Hose VAC006 (EN) r22966v33.png" class="img img-responsive img-rounded" alt="result-image">	
+							</div>	
+							<div class="col-sm-9">	
+								<blockquote>	
+									<h1 id="pname">VAC006</h1>	
+									<a target="_blank" id="plink" href="">Go to official website</a><br>
+									<h3 >Rating: <span id="prating"></span></h3>	
+									<strong><p id="pdesc">Dust Extraction Attachments, General</p></strong>	
+									<p id="pcateg"> 35mm 5-Meter (16.4 ft.)  Airsweep Locking Hose</p>	
+								</blockquote>	
+							</div>	
+						</div>	
+						<hr>	
+						<div class="row text-center">	
+							<div class="col-sm-12">	
+								<h2>Reviews</h2>	
+							</div>	
+						</div>	
+						<br>	
+						<div id="previews" class="row">	
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
-  </head>
-  <body>
-  	<div id = "modals">
-  		<div class="modal fade" id="modalpid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  			<div class="modal-dialog">	
-  				<div class="modal-content">	
-  					<div class="modal-header text-center">	
-  						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  							<span aria-hidden="true">×</span>
-  						</button>	
-  						<h4 class="modal-title" id="myModalLabel">Product Details</h4>	
-  					</div>	
-  					<div class="modal-body">	
-  						<div class="row">	
-  							<div class="col-sm-3">	
-  								<img id="pimg" src="http://mdm.boschwebservices.com/files/Bosch Vacuum Hose VAC006 (EN) r22966v33.png" class="img img-responsive img-rounded" alt="result-image">	
-  							</div>	
-  							<div class="col-sm-9">	
-  								<blockquote>	
-  									<h1 id="pname">VAC006</h1>	
-  									<a target="_blank" id="plink" href="">Go to official website</a><br>
-  									<h3 >Rating: <span id="prating"></span></h3>	
-  									<strong><p id="pdesc">Dust Extraction Attachments, General</p></strong>	
-  									<p id="pcateg"> 35mm 5-Meter (16.4 ft.)  Airsweep Locking Hose</p>	
-  								</blockquote>	
-  							</div>	
-  						</div>	
-  						<hr>	
-  						<div class="row text-center">	
-  							<div class="col-sm-12">	
-  								<h2>Reviews</h2>	
-  							</div>	
-  						</div>	
-  						<br>	
-  						<div id="previews" class="row">	
-  							
-  						</div>	
-  					</div>	
-  					<div class="modal-footer">	
-  					</div>	
-  				</div>	
-  			</div>	
-  		</div>
-  	</div>
-  	<!-- <div class="modal fade" id="modal_signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  		<div class="modal-dialog">
-  			<div class="modal-content">
+						</div>	
+					</div>	
+					<div class="modal-footer">	
+					</div>	
+				</div>	
+			</div>	
+		</div>
+	</div>
+	<div class="container">
 
-  				<div class="modal-header text-center">
-  					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  					<h4 class="modal-title" id="myModalLabel">Product Details</h4>
-  				</div>
+		<div class="row">
 
-  				<div class="modal-body">
-  					<div class="row">
-  						<div class="col-sm-3">
-  							<img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
-  						</div>
-  						<div class="col-sm-9">
-  							<blockquote>
-  								<h1>Some Awesome Product Mk. II</h1>
-  								<a href="#">Go to official website</a><br>
-  								<div class="rating-box">1</div>
-  								<strong><p>Category</p></strong>
-  								<p> This is the result description</p>
-  								<p> This is the follow-up description</p>
-  								<p> This is the wrap</p>
-  							</blockquote>
-  						</div>
-  					</div>
-
-  					<hr>
-
-  					<div class="row text-center">
-  						<div class="col-sm-12">
-  							<h2>Reviews</h2>
-  						</div>
-  					</div>
-  					<br>
-
-  					<div class="row">
-  						<div id="review-container" class="col-sm-12">
-
-  							<div class="row">
-  								<div class="col-sm-10 col-sm-offset-1 review-item well clear-well">
-  									<blockquote>
-  										<h4>Review title</h4>
-  										<small>username</small>
-  										<div class="rating-box">5</div>
-  										<br>
-  										<br>
-  										<i><p id="review-text"> This is the review text</p></i>
-  									</blockquote>
-  								</div>
-  							</div>
-
-  						</div>
-  					</div>
-  				</div>
-
-  				<div class="modal-footer">
-  				</div>
-
-  			</div>
-  		</div>
-  	</div> -->
-
-  	<div class="container">
-
-  		<div class="row">
-
-  			<div class="col-sm-3">
-  				<br>
-  				<h1>Nostradamus</h1>
-  			</div>
-
-  			<div class="col-sm-9 text-center">
-  				<form action="http://10.139.243.107:8888/cgi-bin/GetSearchResults.py?query=aweg" class="form-inline" id="top_form">
-
-  					<div class="row">
-  						<div id="search-param" class="col-sm-10 well clear-well">
-
-  							<br>
-  							<div class="form-group">
-  								<input name = "s" type="text" class="form-control" placeholder="What are you looking for?">
-  							</div>
-  							<br>
-  							<br>
-  							<div class="row">
-<!-- 
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-4 control-label">Maximum :</label>
-                      <div class="col-sm-8">
-                        <select class="form-control">
-                          <option>10</option>
-                          <option>20</option>
-                          <option>30</option>
-                          <option>40</option>
-                          <option>50</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-              -->
-              <div class="col-sm-6 col-sm-offset-4">
-              	<div class="checkbox">
-              		<label>
-              			<input id="sa" name = "sa" type="checkbox" data-toggle="toggle" data-size="small" data-onstyle="success">
-              			<strong>Sentiment Analysis</strong>
-              		</label>
-              	</div>
-              </div>
-
-          </div>
-
-      </div>
-
-      <div class="col-sm-2 well clear-well">
-      	<br>
-      	<button type="submit" class="btn btn-default btn-lg">Search</button>
-      </div>
-  </div>
-
-</form>
-</div>
-</div>  <!-- Header row -->
-
-<hr>
-
-<div class="row">
-
-	<div id="filter-container" class="col-sm-4">
-
-		<h3>Filters</h3>
-		<div class="row well clear-well">
-			<div class="col-sm-12">
-				<div class="btn-group" role="group" aria-label="...">
-					<button id="filter-option-all" type="button" class="btn btn-default">All</button>
-					<button id="filter-option-none" type="button" class="btn btn-default">None</button>
-				</div>
+			<div class="col-sm-3">
 				<br>
-				<br>
-				<div id="filter-options-container" class="btn-group-vertical" data-toggle="buttons">
+				<h1>Nostradamus</h1>
+			</div>
+
+			<div class="col-sm-9 text-center">
+				<form action="http://10.139.243.107:8888/cgi-bin/GetSearchResults.py?query=aweg" class="form-inline" id="top_form">
+
+					<div class="row">
+						<div id="search-param" class="col-sm-10 well clear-well">
+
+							<br>
+							<div class="form-group">
+								<input name = "s" type="text" class="form-control" placeholder="What are you looking for?">
+							</div>
+
+						</div>
+
+						<div class="col-sm-2 well clear-well">
+							<br>
+							<button type="submit" class="btn btn-default btn-lg">Search</button>
+						</div>
+					</div>
+
+				</form>
+				<div class="row">
+					<div class="col-md-4">
+						<button type="text" id="sortbtn" class="btn btn-primary">
+							Descending
+						</button>
+					</div>
+					<div class="col-sm-6">
+						<div class="checkbox">
+							<label>
+								<input id="sa" name = "sa" type="checkbox" data-toggle="toggle" data-size="small" data-onstyle="success">
+								<strong>Sentiment Analysis</strong>
+							</label>
+						</div>
+					</div>
 
 				</div>
+			</div>
+		</div>  <!-- Header row -->
+
+		<hr>
+
+		<div class="row">
+
+			<div id="filter-container" class="col-sm-4">
+
+				<h3>Filters</h3>
+				<div class="row well clear-well">
+					<div class="col-sm-12">
+						<div class="btn-group" role="group" aria-label="...">
+							<button id="filter-option-all" type="button" class="btn btn-default">All</button>
+							<button id="filter-option-none" type="button" class="btn btn-default">None</button>
+						</div>
+						<br>
+						<br>
+						<div id="filter-options-container" class="btn-group-vertical" data-toggle="buttons">
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="row well clear-well">
+					<div class="col-sm-12">
+					</div>
+				</div>
+
+			</div>  <!-- Filter row -->
+
+			<div id="result-container" class="col-sm-8">
 
 			</div>
-		</div>
 
-		<div class="row well clear-well">
-			<div class="col-sm-12">
-			</div>
-		</div>
+		</div>  <!-- Content row -->
+	</div>  <!-- Container -->
 
-	</div>  <!-- Filter row -->
-
-	<div id="result-container" class="col-sm-8">
-<!--
-          <a data-toggle="modal" data-target="#modal_signup" href="#">
-            <div class="row">
-              <div class="col-sm-12 well clear-well result-item">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
-                  </div>
-                  <div class="col-sm-9">
-                    <blockquote>
-                      <h4>Result 1</h4>
-                      <div class="rating-box">4</div>
-                      <strong><p>Category</p></strong>
-                      <p> This is the result description</p>
-                      <p> This is the follow-up description</p>
-                      <p> This is the wrap</p>
-                    </blockquote>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-
-          <a href="#">
-            <div class="row">
-              <div class="col-sm-12 well clear-well result-item">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
-                  </div>
-                  <div class="col-sm-9">
-                    <blockquote>
-                      <h4>Result 1</h4>
-                      <div class="rating-box">3</div>
-                      <strong><p>Category</p></strong>
-                      <p> This is the result description</p>
-                      <p> This is the follow-up description</p>
-                      <p> This is the wrap</p>
-                    </blockquote>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-
-          <a href="#">
-            <div class="row">
-              <div class="col-sm-12 well clear-well result-item">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <img src="./resources/1.jpg" class="img img-responsive img-rounded" alt="result-image">
-                  </div>
-                  <div class="col-sm-9">
-                    <blockquote>
-                      <h4>Result 1</h4>
-                      <div class="rating-box">2</div>
-                      <strong><p>Category</p></strong>
-                      <p> This is the result description</p>
-                      <p> This is the follow-up description</p>
-                      <p> This is the wrap</p>
-                    </blockquote>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </a> -->
-
-    </div>
-
-</div>  <!-- Content row -->
-</div>  <!-- Container -->
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src ="post.js"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
-<script type="text/javascript">
-$('#filter-option-all').click(function whenClickAll(){
-	$('.filter-option').addClass('active');
-	categories = new StringSet();
-	thing = $('.filter-option');
-	$(thing).each(function (e) {
-		categories.add($(this).attr('value'));
-	})
-	loadResults();
-});
-$('#filter-option-none').click(function whenClickAll(){
-	$('.filter-option').removeClass('active');
-	categories = new StringSet();
-	loadResults();
-});
-</script>
-<script type="text/javascript">
-(function printStars() {
-	$('.rating-box').each(function (e) {
-		times = parseInt($(this).text());
-		for (var elt = ""; times > 0; times--)
-			elt += '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>';
-		$(this).replaceWith(elt);
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src ="post.js"></script>
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+	<script type="text/javascript">
+	$('#filter-option-all').click(function whenClickAll(){
+		$('.filter-option').addClass('active');
+		categories = new StringSet();
+		thing = $('.filter-option');
+		$(thing).each(function (e) {
+			categories.add($(this).attr('value'));
+		})
+		loadResults();
 	});
-})();
-$(function() {
-	$('#sa').change(function() {
+	$('#filter-option-none').click(function whenClickAll(){
+		$('.filter-option').removeClass('active');
+		categories = new StringSet();
+		loadResults();
+	});
+	</script>
+	<script type="text/javascript">
+	(function printStars() {
+		$('.rating-box').each(function (e) {
+			times = parseInt($(this).text());
+			for (var elt = ""; times > 0; times--)
+				elt += '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>';
+			$(this).replaceWith(elt);
+		});
+	})();
+	$(function() {
+		$('#sa').change(function() {
     		// alert('Toggle: ' + $(this).prop('checked'));
     		if($(this).prop('checked'))
     		{
@@ -334,7 +185,7 @@ $(function() {
     			loadResults();
     		}
     	})
-})
-</script>
+	})
+	</script>
 </body>
 </html>
