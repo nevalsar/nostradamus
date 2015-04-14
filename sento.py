@@ -4,8 +4,8 @@ from os import system
 import os
 
 
-# db = mdb.connect('10.5.18.67','12CS30026','dual12','12CS30026')
-db = mdb.connect('localhost','root','pass','fun')
+db = mdb.connect('10.5.18.67','12CS30026','dual12','12CS30026')
+# db = mdb.connect('localhost','root','pass','fun')
 cursor = db.cursor()
 
 
@@ -28,11 +28,15 @@ def main():
 	except:
 		pass
 	executer("select rid, text from Review where sentiment_score is NULL")
+	print( "fetching .. ")
 	results = fetcher()
+	print( "fetched. writing to file")
 	with open("reviews","a") as f:
 		for result in results:
-			f.write(str(result[0])+"====>>>>"+str(result[1])+'\n')
+			f.write(str(result[0])+"====>>>>"+str(result[1])+'\n||||||||')
+	print( "written... going in the dark zone")
 	system("torify python sentiment.py")
+	print( "out of the dark zone")
 
 	with open("scores") as f:
 		lines = f.readlines()

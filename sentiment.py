@@ -13,14 +13,19 @@ session = semantria.Session("0346ac1a-a224-4c2c-95b7-0d1eba990bdd", "d2a68640-21
 
 
 def fetcher():
-	content = []
+	i_content = []
 	with open("reviews") as f:
-		content = f.readlines()
+		i_content = f.readlines()
+	tot = ""
+	for line in i_content:
+		tot += line
+	content = tot.split("||||||||")
 	ret = []
 	for line in content:
 		line = line.strip()
 		line = line.split("====>>>>")
-		ret.append(line)
+		if len(line)==2:
+			ret.append(line)
 	return ret
 
 def writer(score,rid):
@@ -51,6 +56,7 @@ def main():
 	results = fetcher()
 	reviews = {}
 	for result in results:
+		print("doing",result)
 		reviews[str(result[0])] = result[1]
 	sentiment(reviews)
 
