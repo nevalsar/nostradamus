@@ -4,7 +4,7 @@ import MySQLdb as mdb
 db = mdb.connect('10.5.18.67', '12CS30026', 'dual12', '12CS30026')
 cursor = db.cursor()
 
-pid = raw_input()
+pid = "3931B-SPB"
 output = {}
 reviews = []
 
@@ -26,7 +26,7 @@ for i in range(0, rc):
 	title = row[2]
 	text = row[3]
 	nick = row[4]
-	date = row[5]
+	date = str(row[5].day) + '/' + str(row[5].month) + '/'+ str(row[5].year)
 	sentiment_score = row[6]
 	reviews.append({'title': title, 'text': text, 'nick': nick, 'date': date, 'sentiment_score': sentiment_score})
 
