@@ -13,6 +13,14 @@ def main():
     count  =0
     jjj = 0
     for hit in response.results:
+        con = db.connect('10.5.18.67','12CS30026','dual12','12CS30026');
+        cur = con.cursor()
+        query = "select * from Product where pid = '"+hit['id'].split('=')[1]+"'"
+        cur.execute(query)
+        res = cur.fetchall()
+        if(len(res)>0):
+            print 'Already there,continuing,',hit['id'].split('=')[1]
+            continue
         pid = []
         pid.append(hit['id'].split('=')[1])
         print pid
@@ -22,7 +30,7 @@ def main():
             continue
         jjj += 1
         details = details[0]
-        details['category'] = getCategory(details['category'])
+        # details['category'] = getCategory(details['category'])
         insertProduct(details)
         # pid = []
         # pid.append(hit['id'].split('=')[1])
@@ -51,11 +59,11 @@ def insertReview(review):
     with con:
         cur = con.cursor()
         query = "INSERT INTO Review(pid,title, text, nick, date, sentiment_score) VALUES("\
-                + '"' + review['pid'].replace('"',"&quot;")    + '", '\
-                + '"' + review['title'].replace('"',"&quot;")         + '", '\
-                + '"' + review['text'].replace('"',"&quot;")         + '", '\
-                + '"' + review['nick'].replace('"',"&quot;")         + '", '\
-                + '"' + review['date'].replace('"',"&quot;")         + '", '\
+                + '"' + review['pid'].replace('"',"&quot;").encode('ascii', 'ignore')    + '", '\
+                + '"' + review['title'].replace('"',"&quot;").encode('ascii', 'ignore')         + '", '\
+                + '"' + review['text'].replace('"',"&quot;").encode('ascii', 'ignore')         + '", '\
+                + '"' + review['nick'].replace('"',"&quot;").encode('ascii', 'ignore')         + '", '\
+                + '"' + review['date'].replace('"',"&quot;").encode('ascii', 'ignore')         + '", '\
                 + " NULL "\
                 + ")";\
         print query
@@ -73,12 +81,12 @@ def insertProduct(product):
     with con:
         cur = con.cursor()
         query = "INSERT INTO Product(pid,pname ,plink ,rating ,description ,category) VALUES("\
-                +'"'+ product['pid'].replace('"',"&quot;")           + '", '\
-                +'"'+ product['pname'].replace('"',"&quot;")             + '", '\
-                +'"'+ product['plink'].replace('"',"&quot;")             + '", '\
-                +'"'+ product['rating'].replace('"',"&quot;")         + '", '\
-                +'"'+ product['description'].replace('"',"&quot;") + '", '\
-                +'"'+ product['category'].replace('"',"&quot;")         + '"'\
+                +'"'+ product['pid'].replace('"',"&quot;").encode('ascii', 'ignore')           + '", '\
+                +'"'+ product['pname'].replace('"',"&quot;").encode('ascii', 'ignore')             + '", '\
+                +'"'+ product['plink'].replace('"',"&quot;").encode('ascii', 'ignore')             + '", '\
+                +'"'+ product['rating'].replace('"',"&quot;").encode('ascii', 'ignore')         + '", '\
+                +'"'+ product['description'].replace('"',"&quot;").encode('ascii', 'ignore') + '", '\
+                +'"'+ product['category'].replace('"',"&quot;").encode('ascii', 'ignore')         + '"'\
                 + ")";\
         print query
         cur.execute(query)
