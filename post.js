@@ -25,11 +25,93 @@ function StringSet() {
     };
 }
 
+function generate_modal(result) {
+    var str = '\
+              <div class="modal fade" id="'+result["pid"] +'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+              <div class="modal-dialog">\
+              <div class="modal-content">\
+              <div class="modal-header text-center">\
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+              <h4 class="modal-title" id="myModalLabel">Product Details</h4>\
+              </div>\
+              <div class="modal-body">\
+              <div class="row">\
+              <div class="col-sm-3">\
+              <img src="'+result["img_src"]+'" class="img img-responsive img-rounded" alt="result-image">\
+              </div>\
+              <div class="col-sm-9">\
+              <blockquote>\
+              <h1>'+result["name"]+'</h1>\
+              <a href="#">Go to official website</a><br>\
+              <div class="rating-box">'+result["avg_score"]+'</div>\
+              <strong><p>'+result["category"]+'</p></strong>\
+              <p> '+result["description"]+'</p>\
+              </blockquote>\
+              </div>\
+              </div>\
+              <hr>\
+              <div class="row text-center">\
+              <div class="col-sm-12">\
+              <h2>Reviews</h2>\
+              </div>\
+              </div>\
+              <br>\
+              <div class="row">\
+              <div id="review-container" class="col-sm-12">\
+              <div class="row">\
+              <div class="col-sm-10 col-sm-offset-1 review-item well clear-well">\
+              <blockquote>\
+              <h4>Review title</h4>\
+              <small>username</small>\
+              <div class="rating-box">5</div>\
+              <br>\
+              <br>\
+              <i><p id="review-text"> This is the review text</p></i>\
+              </blockquote>\
+              </div>\
+              </div>\
+              </div>\
+              </div>\
+              </div>\
+              <div class="modal-footer">\
+              </div>\
+              </div>\
+              </div>\
+              </div>';
+    $("#modals").append(str);
+}
+
+function request_data(pid) {
+    $.ajax({
+        //JSONP API
+        url: "http://10.139.243.107:8888/cgi-bin/GetProductDetails.py?pid="+pid,
+        //the name of the callback function
+        jsonp: generate_modal,
+        //tell jQuery to expect JSONP
+        dataType: "jsonp"
+        //tell YQL what we want and that we want JSON
+    });
+}
+
+function search_result_click() {
+    console.log("here");
+    var elem = $( this );
+    var target = elem.attr("id");
+    
+    console.log(elem);
+//    alert(target);
+    pid = "RA1054";
+    result = request_data(pid);
+//    generate_modal(pid);
+}
+
+//$(".search_cover").click(search_result_click);
+
 function functionName(data) {
     var results = data ["results"];
     results.sort(function(a,b) { return parseFloat(b["avg_score"]) - parseFloat(a["avg_score"]) } );
     console.log(JSON.stringify(results, null, "\t"));
-     console.log(data["results"][0]["pid"]);
+    console.log(data["results"][0]["pid"]);
     var i=0;
     // var categories = [];
     var categories = new StringSet();
@@ -37,7 +119,8 @@ function functionName(data) {
     for(i=0; i<results.length; i++) {
         categories.add(results[i]["category"]);
         var str = '\
-                  <a data-toggle="modal" data-target="#'+results[i]["pid"]+'" href="#">\
+        <div class="search_cover" id = "'+results[i]["pid"]+'">\
+                  <a onclick = "search_result_click()" class = "search_result_link" data-toggle="modal" data-target="#'+results[i]["pid"]+'" href="#" id ='+results[i]["pid"]+' >\
                   <div class="row">\
                   <div class="col-sm-12 well clear-well result-item">\
                   <div class="row">\
@@ -56,8 +139,11 @@ function functionName(data) {
                   </div>\
                   </div>\
                   </a>\
+                  </div>\
                   ';
         $("#result-container").append(str);
+        request_data(results[i]["pid"]);
+        
         var str = '\
                   <div class="modal fade" id="'+results[i]["pid"] +'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
                   <div class="modal-dialog">\
@@ -111,8 +197,8 @@ function functionName(data) {
                   </div>\
                   </div>';
         $("#modals").append(str);
+       
     }
-    //console.log(categories.values());
     var cat = categories.values();
     for(i=0; i<cat.length; i++) {
         str='\
@@ -121,22 +207,7 @@ function functionName(data) {
             </label>\
             '
             $("#filter-options-container").append(str);
-        }
-}
-
-$(".check_box").change(function whenClick(){
-    alert ("clicked");
-//    selected = ('.filter-option activ > inpute');
-    //thing = $('.filter-option > input');
-//    $(selected).each(function (e) {
-  //      console.log(e.text());
-   // })
-});
-
-
-function get_selected_list() {
-    $("#filter-options-container")
-
+    }
 }
 
 function getdata(term) {
@@ -144,12 +215,12 @@ function getdata(term) {
     $.ajax({
         //JSONP API
         url: "http://10.139.243.107:8888/cgi-bin/GetSearchResults.py?query="+term,
-    //the name of the callback function
-    jsonp: functionName,
-    //tell jQuery to expect JSONP
-    dataType: "jsonp"
-    //tell YQL what we want and that we want JSON
-        });
+        //the name of the callback function
+        jsonp: functionName,
+        //tell jQuery to expect JSONP
+        dataType: "jsonp"
+        //tell YQL what we want and that we want JSON
+    });
 }
 
 // Attach a submit handler to the form
