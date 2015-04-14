@@ -71,3 +71,6 @@ hr {
 #review-container .review-item {
     border: solid 1px rgba(0, 0, 0, .5);
 }
+#filter-options-container input{
+    text-align:left;
+}
